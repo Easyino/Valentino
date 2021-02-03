@@ -5,24 +5,21 @@
 
 
 
-
-
 void setup() {
-
   Serial.begin(115200);
-
   radioConfigRec();
-
 }
+
+
 
 void loop() {
   if (radio_timeout < millis()) {
     Serial.println("Timeout");
     radioConfigRec();
   }
+  if (getRadioMessage()) {}
 
-  if (getRadioMessage()) {
-    radio_timeout =millis()+ TIMEOUT_BUFFER;
-  }
+  //only for test purpose
   while (analogRead(A0)) {}
+
 }
