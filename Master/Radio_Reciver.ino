@@ -34,6 +34,7 @@ bool getRadioMessage(bool stat, int ret)
 
     if (payload >= 16384)
     {
+      endTimer(0);
       stat = true;
       ret = payload - 16384;
     }
@@ -43,15 +44,15 @@ bool getRadioMessage(bool stat, int ret)
       stat = false;
       ret = payload;
     }
-    //logging all radio parameters
- //   Serial.print("Payload: ");
- //   Serial.print(payload);
- //   Serial.print(" | ");
- //   Serial.print(payload, BIN);
- //   Serial.print("   stat: ");
- //   Serial.print(stat);
- //   Serial.print("    ret: ");
- //   Serial.println(ret);
+ //logging all radio parameters
+    Serial.print("Payload: ");
+    Serial.print(payload);
+    Serial.print(" | ");
+    Serial.print(payload, BIN);
+    Serial.print("   stat: ");
+    Serial.print(stat);
+    Serial.print("    ret: ");
+    Serial.println(ret);
     return true;
   }
   return false;

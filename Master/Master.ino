@@ -8,14 +8,13 @@
 void setup() {
   Serial.begin(115200);
   radioConfigRec();
-  pinMode(12,INPUT);
+  pinMode(3,INPUT_PULLUP);
 }
 
 
 
 void loop() {
 
-Serial.println(digitalRead(12));
 
   char let;
   if(Serial.available()){
@@ -26,23 +25,26 @@ startTimer();
     }
     else if(let=='e'){
 endTimer(0);
-    Serial.println("timer Stopped");
+    Serial.println("timer has been Stopped");
     }
     else if(let=='r'){
 resetTimer();
-    Serial.println("timer Started");
+    Serial.println("timer has been Resetted");
     }
   }
 
 
 
 
-if(!digitalRead(13)){
+if(!digitalRead(3)){
 startTimer();
     Serial.println("timer Started");
 }
-//Serial.print("time: ");
-//Serial.println(realTime());
+if(onTimer){
+
+Serial.print("time: ");
+Serial.println(realTime());
+}
 
 
 
@@ -52,6 +54,7 @@ startTimer();
     radioConfigRec();
   }
   if (getRadioMessage(&slave_ir_state,&radio_ret)) {}
+  if(slave_ir_state)endTimer(0);
 
 
   //only for test purpose
