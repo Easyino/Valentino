@@ -1,7 +1,7 @@
 #include <alpha.h>
 Easy scheda(true);
-#define delta 2
-#define period 150
+#define delta 5
+#define period 50
 #define averageLength 100
 int counter = 0;
 bool passed = false;
@@ -34,7 +34,7 @@ void loop() {
   counter = (counter + 1) % averageLength;
   if (millis() - previousMillisPulse > period){
     passed = true;
-    scheda.accendi(0, 50, 0);
+    scheda.accendi(0, 5, 0);
   }
   else {
     passed = false;
