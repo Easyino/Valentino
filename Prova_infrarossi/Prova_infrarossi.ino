@@ -1,14 +1,14 @@
 #include <alpha.h>
 Easy scheda(true);
 #define delta 5
-#define period 50
-#define averageLength 100
+#define period 35
+#define averageLength 200
+int pulsePeriod = 0;
 int counter = 0;
 bool passed = false;
 unsigned long int previousMillisPulse;
 unsigned int pulse[averageLength];
 float average = 0;
-int i;
 void setup() {
   Serial.begin(500000);
   pinMode(A1, INPUT);
@@ -19,6 +19,10 @@ void loop() {
   Serial.print(pulse[counter]);
   Serial.print(" | ");
   Serial.print(average - 5);
+//  if (pulsePeriod < 60) {
+//    Serial.print(" | ");
+//    Serial.print(pulsePeriod);
+//  }
   Serial.print(" | ");
   Serial.print(passed - 10);
   Serial.print(" | ");
@@ -28,11 +32,12 @@ void loop() {
   pulse[counter] = analogRead(A1);
   average += pulse[counter];
   average /= averageLength;
-  if (pulse[counter] - average >= delta){
+  if (pulse[counter] - average >= delta) {
+    pulsePeriod = millis() - previousMillisPulse;
     previousMillisPulse = millis();
   }
   counter = (counter + 1) % averageLength;
-  if (millis() - previousMillisPulse > period){
+  if (millis() - previousMillisPulse > period) {
     passed = true;
     scheda.accendi(5, 0, 0);
   }

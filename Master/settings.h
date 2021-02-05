@@ -15,4 +15,14 @@ bool slave_ir_state;
 unsigned long int initial_time;
 unsigned long int final_time;
 unsigned long int saved_time;
-bool onTimer=0;
+bool onTimer = 0;
+
+//IR
+#define delta 5
+#define period 35
+#define averageLength 200
+//int pulsePeriod = 0;
+int pulsePositioinCounter = 0;
+unsigned long int previousMillisPulse;
+unsigned int pulse[averageLength];
+float average = 0;
