@@ -15,7 +15,7 @@ void setup() {
 
 void loop() {
 
-
+//only for debugging purpose
   char let;
   if(Serial.available()){
     let=Serial.read();
@@ -35,13 +35,13 @@ resetTimer();
 
 
 
-
+//if time is started
 if(!digitalRead(3)){
 startTimer();
     Serial.println("timer Started");
 }
-if(onTimer){
 
+if(onTimer){
 Serial.print("time: ");
 Serial.println(realTime());
 }
