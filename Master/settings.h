@@ -17,6 +17,28 @@ unsigned long int final_time;
 unsigned long int saved_time;
 bool onTimer = 0;
 
+//display
+#define DISPDATA 3
+#define DISPCLOCK 4
+#define DISPSET 5
+
+//numbers(0-9) in hex format.
+/*
+
+   A
+F     B
+   G
+E     C
+   D
+
+segment value:
+A  B  C  D | E  F  G  dp
+8  4  2  1 | 8  4  2  1
+*/
+
+byte numbers[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66, 0xB6, 0xBE, 0xE0, 0xFE, 0xF6};
+bool isTwoPoints;
+
 //IR
 #define delta 5
 #define period 35

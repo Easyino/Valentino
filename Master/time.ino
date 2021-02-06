@@ -22,12 +22,14 @@ void endTimer(int n_ret)
         Serial.println(realTime());
         Serial.print("------------------------------------");
         Serial.println("");
+        dispPrint(saved_time);
     }
 }
 
 void resetTimer()
 {
     saved_time = 0;
+    dispPrintChar("-----");
 }
 
 unsigned long int realTime()
@@ -47,13 +49,13 @@ unsigned long int convertTime(unsigned long int time)
     decimals = time % 100;
     seconds = (time / 100) % 60;
     minute = time / 6000;
-    Serial.print("      | ");
-    Serial.print(minute);
-    Serial.print(" ");
-    Serial.print(seconds);
-    Serial.print(" ");
-    Serial.print(decimals);
-    Serial.print(" |         ");
+    //    Serial.print("      | ");
+    //   Serial.print(minute);
+    //    Serial.print(" ");
+    //    Serial.print(seconds);
+    //    Serial.print(" ");
+    //   Serial.print(decimals);
+    //    Serial.print(" |         ");
     res = decimals + seconds * 100 + minute * 10000;
 
     return res;

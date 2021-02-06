@@ -3,60 +3,73 @@
 #include "RF24.h"
 #include "settings.h"
 
-
-
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   radioConfigRec();
-  pinMode(3,INPUT_PULLUP);
+  //btn pin for test purpose
+  pinMode(11, INPUT_PULLUP);
+
+  //display pin
+  pinMode(DISPDATA, OUTPUT);
+  pinMode(DISPCLOCK, OUTPUT);
+  pinMode(DISPSET, OUTPUT);
+  dispPrintChar("-----");
 }
 
+void loop()
+{
 
-
-void loop() {
-
-//only for debugging purpose
+  //only for debugging purpose
   char let;
-  if(Serial.available()){
-    let=Serial.read();
-    if(let=='s'){
-startTimer();
-    Serial.println("timer Started");
+  if (Serial.available())
+  {
+    let = Serial.read();
+    if (let == 's')
+    {
+      startTimer();
+      Serial.println("timer Started");
     }
-    else if(let=='e'){
-endTimer(0);
-    Serial.println("timer has been Stopped");
+    else if (let == 'e')
+    {
+      endTimer(0);
+      Serial.println("timer has been Stopped");
     }
-    else if(let=='r'){
-resetTimer();
-    Serial.println("timer has been Resetted");
+    else if (let == 'r')
+    {
+      resetTimer();
+      Serial.println("timer has been Resetted");
     }
   }
 
-
-
-//if time is started
-if(!digitalRead(3)){
-startTimer();
+  //if time is started
+  if (!digitalRead(11))
+  {
+    startTimer();
     Serial.println("timer Started");
-}
+  }
 
-if(onTimer){
-Serial.print("time: ");
-Serial.println(realTime());
-}
+  if (onTimer)
+  {
+    Serial.print("time: ");
+    Serial.println(realTime());
+    dispPrint(realTime());
+  }
 
-
-
-
-  if (radio_timeout < millis()) {
+  if (radio_timeout < millis())
+  {
     Serial.println("Timeout");
     radioConfigRec();
   }
-  if (getRadioMessage(&slave_ir_state,&radio_ret)) {}
-  if(slave_ir_state)endTimer(0);
+  if (getRadioMessage(&slave_ir_state, &radio_ret))
+  {
 
+    if (slave_ir_state)
+      endTimer(0);
+  }
 
   //only for test purpose
-  while (analogRead(A0)) {}
+  while (analogRead(A0))
+  {
+  }
 }
