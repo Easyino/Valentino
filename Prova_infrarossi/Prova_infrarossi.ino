@@ -1,6 +1,6 @@
 #include <alpha.h>
 Easy scheda(true);
-#define delta 5
+#define delta 2
 #define period 35
 #define averageLength 200
 int pulsePeriod = 0;
