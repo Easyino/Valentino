@@ -6,15 +6,25 @@
 void setup()
 {
   Serial.begin(115200);
-  radioConfigRec();
+  //radioConfigRec();
   //btn pin for test purpose
   pinMode(11, INPUT_PULLUP);
 
   //display pin
+  pinMode(6, INPUT);
   pinMode(DISPDATA, OUTPUT);
   pinMode(DISPCLOCK, OUTPUT);
   pinMode(DISPSET, OUTPUT);
-  dispPrintChar("-----");
+
+//dispPrint(81111);
+dispPrintChar("8    ");
+  startTimer();
+  while (1)
+  {
+  //  dispPrint(realTime()/100);
+
+    delay(30);
+  }
 }
 
 void loop()
