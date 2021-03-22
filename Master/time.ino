@@ -2,7 +2,6 @@ void startTimer()
 {
     if (!onTimer)
     {
-
         initial_time = millis() / 10;
         onTimer = true;
     }
@@ -12,7 +11,6 @@ void endTimer(int n_ret)
 {
     if (onTimer)
     {
-
         final_time = (millis() - n_ret * TRANSMISSION_TIME) / 10;
         onTimer = false;
         saved_time = final_time - initial_time;
@@ -34,7 +32,6 @@ void resetTimer()
 
 unsigned long int realTime()
 {
-
     if (onTimer)
         return convertTime(millis() / 10 - initial_time);
     else
@@ -45,7 +42,7 @@ unsigned long int realTime()
 unsigned long int convertTime(unsigned long int time)
 {
     unsigned long int res = 0;
-    unsigned long int decimals, seconds, minute;
+    unsigned int decimals, seconds, minute;
     decimals = time % 100;
     seconds = (time / 100) % 60;
     minute = time / 6000;
@@ -57,6 +54,5 @@ unsigned long int convertTime(unsigned long int time)
     //   Serial.print(decimals);
     //    Serial.print(" |         ");
     res = decimals + seconds * 100 + minute * 10000;
-
     return res;
 }

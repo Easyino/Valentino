@@ -16,12 +16,12 @@ void setup()
   pinMode(DISPCLOCK, OUTPUT);
   pinMode(DISPSET, OUTPUT);
 
-//dispPrint(81111);
-dispPrintChar("8    ");
+  //dispPrint(81111);
+  dispPrintChar("8    ");
   startTimer();
   while (1)
   {
-  //  dispPrint(realTime()/100);
+    //  dispPrint(realTime()/100);
 
     delay(30);
   }
@@ -73,7 +73,6 @@ void loop()
   }
   if (getRadioMessage(&slave_ir_state, &radio_ret))
   {
-
     if (slave_ir_state)
       endTimer(0);
   }

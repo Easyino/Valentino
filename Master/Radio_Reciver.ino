@@ -8,9 +8,7 @@ void radioConfigRec()
     ret--;
     delay(500);
     if (ret < 0)
-      while (1)
-      {
-      }
+      while (1){}
   }
 
   radio.setPALevel(RF24_PA_LOW);
@@ -29,16 +27,13 @@ bool getRadioMessage(bool stat, int ret)
   {
     uint8_t bytes = radio.getPayloadSize();
     radio.read(&payload, bytes);
-
     radio_timeout = millis() + TIMEOUT_BUFFER;
-
     if (payload >= 16384)
     {
       endTimer(0);
       stat = true;
       ret = payload - 16384;
     }
-
     else
     {
       stat = false;
