@@ -11,10 +11,11 @@ void setup()
   pinMode(11, INPUT_PULLUP);
 
   //display pin
-  pinMode(6, INPUT);
+  //pinMode(6, INPUT);
   pinMode(DISPDATA, OUTPUT);
   pinMode(DISPCLOCK, OUTPUT);
   pinMode(DISPSET, OUTPUT);
+  pinMode(IRSTATE, OUTPUT);
 
   //dispPrint(81111);
   dispPrintChar("8    ");

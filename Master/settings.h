@@ -21,6 +21,8 @@ bool onTimer = 0;
 #define DISPDATA 3
 #define DISPCLOCK 4
 #define DISPSET 5
+#define IRSTATE A1
+#define IRRECIVER A0
 
 //numbers(0-9) in hex format.
 /*

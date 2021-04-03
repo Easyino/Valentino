@@ -10,7 +10,7 @@ unsigned long int previousMillisPulse;
 unsigned int pulse[averageLength];
 float average = 0;
 void setup() {
-  Serial.begin(500000);
+  Serial.begin(1000000);
   pinMode(A1, INPUT);
   previousMillisPulse = millis();
 }
