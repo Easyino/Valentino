@@ -1,6 +1,6 @@
 #include <alpha.h>
 Easy scheda(true);
-#define delta 2
+#define delta 1.5
 #define period 35
 #define averageLength 10
 #define affLength 50
@@ -54,11 +54,11 @@ void loop() {
   affidability += trigg[counter1];
   affidability /= affLength;
 
-  if (affidability >= 70) {
+  if (affidability >= 80) {
     scheda.accendi(0, 0, 0);
   }
   else {
-    scheda.accendi(5, 0, 0);
+    scheda.accendi(255, 0, 0);
   }
 
   counter = (counter + 1) % averageLength;
