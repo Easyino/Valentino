@@ -5,10 +5,14 @@
 
 void setup()
 {
+  
   Serial.begin(115200);
+
+  
+
   //radioConfigRec();
   //btn pin for test purpose
-  pinMode(11, INPUT_PULLUP);
+  //pinMode(11, INPUT_PULLUP);
 
   //display pin
   //pinMode(6, INPUT);
@@ -17,15 +21,11 @@ void setup()
   pinMode(DISPSET, OUTPUT);
   pinMode(IRSTATE, OUTPUT);
 
+
   //dispPrint(81111);
   dispPrintChar("8    ");
+  while(1){}
   startTimer();
-  while (1)
-  {
-    //  dispPrint(realTime()/100);
-
-    delay(30);
-  }
 }
 
 void loop()
@@ -53,12 +53,7 @@ void loop()
     }
   }
 
-  //if time is started
-  if (!digitalRead(11))
-  {
-    startTimer();
-    Serial.println("timer Started");
-  }
+
 
   if (onTimer)
   {
@@ -67,19 +62,15 @@ void loop()
     dispPrint(realTime());
   }
 
-  if (radio_timeout < millis())
-  {
-    Serial.println("Timeout");
-    radioConfigRec();
-  }
-  if (getRadioMessage(&slave_ir_state, &radio_ret))
-  {
-    if (slave_ir_state)
-      endTimer(0);
-  }
-
-  //only for test purpose
-  while (analogRead(A0))
-  {
-  }
+//  if (radio_timeout < millis())
+//  {
+//    Serial.println("Timeout");
+//    radioConfigRec();
+//  }
+//  if (getRadioMessage(&slave_ir_state, &radio_ret))
+//  {
+//    if (slave_ir_state)
+//      endTimer(0);
+//  }
+//  IRdetected();
 }

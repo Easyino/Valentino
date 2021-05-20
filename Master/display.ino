@@ -8,13 +8,13 @@ void dispPrint(unsigned long int num)
   //displaying the number, starting from the less significant figure
   digitalWrite(DISPSET, 0);
   int j = 10000;
-  for (int i = 0; i < 5; i++, j /= 10, num %= j)
+  for (int i = 0; i < 5; i++, j /= 10)
   {
     Serial.print(i);
     Serial.println(numbers[num / j]);
 
     shiftOut(DISPDATA, DISPCLOCK, LSBFIRST, numbers[num / j] + isTwoPoints);
-    //num = num % j;
+    num = num % j;
   }
 
   Serial.println("---------------------");

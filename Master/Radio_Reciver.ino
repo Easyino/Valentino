@@ -7,8 +7,8 @@ void radioConfigRec()
     Serial.println(F("radio hardware is not responding!!"));
     ret--;
     delay(500);
-    if (ret < 0)
-      while (1){}
+//    if (ret < 0)
+//      while (1){}
   }
 
   radio.setPALevel(RF24_PA_LOW);

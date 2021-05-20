@@ -1,5 +1,5 @@
 // Radio connection
-RF24 radio(7, 8);
+RF24 radio(8,7);
 uint8_t address[][6] = {"Valen1", "Valen2"};
 int payload;
 
@@ -42,11 +42,16 @@ byte numbers[] = {0xFC, 0x60, 0xDA, 0xF2, 0x66, 0xB6, 0xBE, 0xE0, 0xFE, 0xF6};
 bool isTwoPoints;
 
 //IR
-#define delta 5
+#define delta 1.5
 #define period 35
-#define averageLength 200
-//int pulsePeriod = 0;
-int pulsePositioinCounter = 0;
+#define averageLength 10
+#define affLength 50
+int pulsePeriod = 0;
+int counter = 0;
+int counter1 = 0;
+bool passed = false;
 unsigned long int previousMillisPulse;
 unsigned int pulse[averageLength];
+unsigned int trigg[affLength];
 float average = 0;
+float affidability = 0;
