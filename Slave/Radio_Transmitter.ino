@@ -17,7 +17,8 @@ void radioConfigTrans()
 bool pingRadio(bool stat)
 {
 
-  payload = (stat * 128 << 7);
+ payload = (stat * 128 << 7);
+ 
   if (connection_ret < 16384)payload = payload | (connection_ret);
   else connection_ret = 1;
   bool report = radio.write(&payload, sizeof(float));
